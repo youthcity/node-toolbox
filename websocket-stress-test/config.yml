@@ -1,0 +1,17 @@
+config:
+  target: "http://localhost:1337"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+  socketio:
+    path: "/"
+    transports: ["websocket"]
+scenarios:
+  - name: "Connect, join room and idle for 10 seconds"
+    engine: "socketio"
+    flow:
+      - emit:
+          channel: "join"
+          data: 1355541
+      - think: 10
+

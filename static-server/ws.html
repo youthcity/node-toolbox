@@ -1,0 +1,74 @@
+<button id="login">登陆</button>
+<br /><br />
+<button id="update_vars">改变变量</button>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/socket.io/2.0.4/socket.io.js"></script>
+<script>
+  const hostname = 'http://localhost:1337';
+  const login_url = '/api/user/login';
+  const test_url = '/tiger/user';
+
+  $('#login').click(function () {
+      $.ajax({
+      type: 'POST',
+      url: hostname + login_url,
+      
+      data: {
+        username: '',
+        password: '123456',
+      },
+      xhrFields: {
+        withCredentials: true
+      },
+      success: () => {
+        console.log('登陆成功');
+        $.ajax({
+          type: 'GET',
+          url: hostname + test_url,
+          xhrFields: {
+            withCredentials: true
+          },
+        });
+
+        handle_socket();
+      }
+    });
+  });
+
+  function handle_socket() {
+    var socket = io('ws://localhost:1337', {
+      path: '/cloudstorage',
+      transports: ['websocket'],
+    });
+
+  	// 加入房间
+    socket.on('connect', function () {
+      const work_id = 101112;
+      console.log(' 链接。。。。。。。');
+      socket.emit('join', work_id);
+    });
+
+    socket.on('connect_done', function ( is_joined ) {
+      if (is_joined) {
+        console.log(' 连接成功 ');
+      } else {
+        console.log(' 连接失败 ');
+      }
+    });
+    socket.on('error', function (error) {
+      console.log('error =====');
+    });
+    socket.on('connect_error', function (error) {
+      console.log('=========连接失败', error);
+    });
+    socket.on('n_online_users', function (data) {
+      console.log(data);
+    });
+    socket.on('update_vars_done', function (data) {
+      console.log(data);
+    });
+
+  }
+
+</script>
