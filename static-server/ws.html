@@ -1,6 +1,12 @@
 <button id="login">登陆</button>
 <br /><br />
 <button id="update_vars">改变变量</button>
+<br /><br />
+<button id="update_private_vars">改变私有变量</button>
+<br /><br />
+<button id="list_var">获取变量</button>
+<br /><br />
+<button id="sort">排序</button>
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/socket.io/2.0.4/socket.io.js"></script>
@@ -15,7 +21,7 @@
       url: hostname + login_url,
       
       data: {
-        username: '',
+        username: '15106646645',
         password: '123456',
       },
       xhrFields: {
@@ -35,7 +41,7 @@
       }
     });
   });
-
+  handle_socket();
   function handle_socket() {
     var socket = io('ws://localhost:1337', {
       path: '/cloudstorage',
@@ -44,7 +50,7 @@
 
   	// 加入房间
     socket.on('connect', function () {
-      const work_id = 101112;
+      const work_id = 101111;
       console.log(' 链接。。。。。。。');
       socket.emit('join', work_id);
     });
@@ -69,6 +75,46 @@
       console.log(data);
     });
 
+    socket.on('update_private_vars_done', function (data) {
+      console.log(data);
+    })
+    socket.on('list_varibles_done', function (data) {
+      console.log(data);
+    })
+
+    socket.on('list_ranking_done', function (data) {
+      console.log(data);
+    })
+
+    $('#update_vars').click(function () {
+      const data = {
+        'S1aafW7UG': {
+          value: 1,
+          action: 'inc',
+        },
+      };
+
+      socket.emit('update_vars', data);
+    })
+
+    $('#update_private_vars').click(function () {
+      socket.emit('update_private_vars', {
+        'HJHq31iLG': 5,
+        'SJ1jnyjUG': 6,
+      });
+    })
+
+    $('#list_var').click(function () {
+      socket.emit('list_variables');
+    })
+
+    $('#sort').click(function () {
+      socket.emit('list_ranking', {
+        cvid: 'HJHq31iLG',
+        limit: 30,
+        order_type: -1,
+      });
+    })
   }
 
 </script>
