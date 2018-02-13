@@ -9,6 +9,7 @@ NodeJS开发中常使用的工具
 - artillery 压力测试工具
 - websocket 压力测试工具
 - 静态服务器
+- 压缩打包与解包
 
 ## 工具
 
