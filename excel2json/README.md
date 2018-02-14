@@ -46,8 +46,11 @@ app.get('/api/jobs/download', (req, res) => {
 }
 ```
 
+## node-xlsx 处理 excel
+
 ## 参考资料
 
 - [Node读写Excel文件探究实践](https://aotu.io/notes/2016/04/07/node-excel/index.html)
 - [js-xlsx](https://github.com/SheetJS/js-xlsx)
 - [From json to sheet](https://github.com/SheetJS/js-xlsx/issues/610)
+- [Node XLSX](https://github.com/mgcrea/node-xlsx)

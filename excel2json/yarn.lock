@@ -49,6 +49,12 @@ frac@~1.1.0:
   dependencies:
     voc "~1.0.0"
 
+node-xlsx@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/node-xlsx/-/node-xlsx-0.11.2.tgz#0bb03ce61be9adc0b186d55c4b0f8404fe321aae"
+  dependencies:
+    xlsx "^0.11.10"
+
 printj@~1.1.0, printj@~1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/printj/-/printj-1.1.1.tgz#3749360215888d460a35b683ae13dcc02c620b47"
@@ -62,6 +68,18 @@ ssf@~0.10.1:
 voc@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/voc/-/voc-1.0.0.tgz#5465c0ce11d0881f7d8e36d8ca587043f33a25ae"
+
+xlsx@^0.11.10:
+  version "0.11.19"
+  resolved "https://registry.yarnpkg.com/xlsx/-/xlsx-0.11.19.tgz#2f019d9df756f6345aac5bc1af2442cf22a025e3"
+  dependencies:
+    adler-32 "~1.2.0"
+    cfb "~1.0.2"
+    codepage "~1.12.0"
+    commander "~2.13.0"
+    crc-32 "~1.2.0"
+    exit-on-epipe "~1.0.1"
+    ssf "~0.10.1"
 
 xlsx@^0.12.0:
   version "0.12.0"
