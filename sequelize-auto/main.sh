@@ -1,0 +1,1 @@
+sequelize-auto -o "./models" -d sequelize_auto_test -h localhost -u root -p 6033 -x mRVHePdfa4Z3X0ewfctefpZuqDrSbtINR4VRslgA2s -e mysql\n
