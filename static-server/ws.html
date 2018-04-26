@@ -46,6 +46,9 @@
     var socket = io('ws://localhost:1337', {
       path: '/cloudstorage',
       transports: ['websocket'],
+      query: {
+        authorization_type: 1,
+      }
     });
 
   	// 加入房间
@@ -63,6 +66,7 @@
       }
     });
     socket.on('error', function (error) {
+      console.log('Error 错误：', error);
       console.log('error =====');
     });
     socket.on('connect_error', function (error) {
@@ -78,7 +82,7 @@
     socket.on('update_private_vars_done', function (data) {
       console.log(data);
     })
-    socket.on('list_varibles_done', function (data) {
+    socket.on('list_variables_done', function (data) {
       console.log(data);
     })
 
@@ -99,8 +103,8 @@
 
     $('#update_private_vars').click(function () {
       socket.emit('update_private_vars', {
-        'HJHq31iLG': 5,
-        'SJ1jnyjUG': 6,
+        'BJjk-kL9f': 5,
+        'SJIOaX_M': 666666666666666,
       });
     })
 
@@ -110,7 +114,7 @@
 
     $('#sort').click(function () {
       socket.emit('list_ranking', {
-        cvid: 'HJHq31iLG',
+        cvid: 'BJjk-kL9f',
         limit: 30,
         order_type: -1,
       });
