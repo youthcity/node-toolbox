@@ -7,6 +7,8 @@
 <button id="list_var">获取变量</button>
 <br /><br />
 <button id="sort">排序</button>
+<br /><br />
+<button id="start_int">开始</button>
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/socket.io/2.0.4/socket.io.js"></script>
@@ -119,6 +121,19 @@
         order_type: -1,
       });
     })
+    
+    $('#start_int').click(function () {
+      setInterval(function () {
+        const data = {
+          'S1aafW7UG': {
+            value: 1,
+            action: 'inc',
+          },
+        };
+
+        socket.emit('update_vars', data);
+      }, 50);
+    });
   }
 
 </script>

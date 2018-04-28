@@ -44,8 +44,6 @@ const download = async (target_url, dir_path, bcmc_dir_path, cb) => {
       const bcmc_obj = cb(bcm_obj);
       console.log(bcmc_obj);
       fs.writeFileSync(bcmc_dist, JSON.stringify(bcmc_obj));
-      
-
     });
 
 
